@@ -1,20 +1,35 @@
+.wrapper {
+    overflow-x: hidden;
+}
 .header {
     font-family: "geometriamedium";
     &__top-line {
         // min-height: 206px;
         color: #fff;
-        background: url("../img/bg-head.png");
-        background-repeat: no-repeat;
-        background-position: right top;
-        background-size: cover;
+        // background: url("../img/bg-head.png");
+        // background-repeat: no-repeat;
+        // background-position: right top;
+        // background-size: cover;
         @include transition(.25s);
+        position: relative;
+        &:before {
+            content: "";
+            position: absolute;
+            background: url(../img/bg-head.png);
+            background-repeat: no-repeat;
+            background-size: cover;
+            width: 85%;
+            z-index: -1;
+            right: 0;
+            height: 100%;
+            background-position-x: 0;
+        }
     }
     &__logo-wrap {
         @include clearfix;
         min-height: 150px;
-        padding:  {
-            top: 30px;
-        }
+        padding-top: 35px;
+        padding-bottom: 15px;
     }
     .logo {
         float: left;
@@ -47,6 +62,7 @@
         position: relative;
         z-index: 1;
         margin-right: 30px;
+        margin-bottom: 15px;
         .soc-item {
             background: url("../img/icons/socials.svg");
             opacity: .79;
@@ -84,7 +100,7 @@
         position: relative;
         z-index: 1;
         margin-top: 4px;
-        margin-right: 60px;
+        margin-right: 30px;
         .lang-item {
             background: url("../img/icons/langs.png");
             background-repeat: no-repeat;
@@ -110,51 +126,10 @@
             background-position: -10px -10px;
         }
     }
-    .search {
-        &-form {
-            @include clearfix;
-            position: relative;
-            margin-bottom: 12px;
-        }
-        &-label {
-            background-image: url("../img/icons/search.svg");
-            background-repeat: no-repeat;
-            background-size: cover;
-            width: 28px;
-            height: 30px;
-            display: block;
-            z-index: 3;
-            position: relative;
-            cursor: pointer;
-            margin-top: -32px;
-            float: right;
-        }
-        &-wrap {
-            position: absolute;
-            top: 0;
-            visibility: hidden;
-            right: 5px;
-            .search-input {
-                @include border-radius(5px);
-                width: 0;
-                border: none;
-                padding: 10px;
-                position: relative;
-                top: -3px;
-                right: 30px;
-                -webkit-transition: .2s;
-                        transition: .2s;
-            }
-            .search-btn {
-                position: absolute;
-                background: #0072bc;
-                right: 31px;
-                top: -2px;
-                border-radius: 5px;
-                padding: 9px;
-                color: #fff;
-            }
-        }
+    .loupe {
+        width: 24px;
+        margin-top: 2px;
+        cursor: pointer;
     }
     .personal-cabinet {
         font-size: 14px;
@@ -224,13 +199,40 @@
             line-height: 0;
         }
     }
+    .sub-list {
+        text-transform: uppercase;
+        display: none;
+        position: absolute;
+        background: rgba(0,86,164,.84);
+        top: 100%;
+        left: 0;
+        z-index: 1;
+        li {
+            cursor: pointer;
+            display: block;
+            &:hover {
+                background: rgba(0, 86, 164, .66);
+            }
+        }
+        a {
+            padding: 11px 18.3px;
+            display: block;
+        }
+    }
 }
 .navigation-item {
     // float: left;
     display: inline-block;
     margin-left: -5px;
+    position: relative;
     &:first-child {
         margin-left: 0;
+    }
+    &:hover {
+        background: #65bff1;
+        .sub-list {
+            display: block;
+        }
     }
 }
 .navigation-link {
@@ -238,9 +240,12 @@
     margin-bottom: -1px;
     display: block;
     @include transition(.35s);
-    &:hover {
-        background: #65bff1;
-    }
+    // &:hover {
+    //     background: #65bff1;
+    //     + .sub-list{
+    //         display: block;
+    //     }
+    // }
 }
 .menu-toggle {
     display: none;
@@ -328,7 +333,39 @@
     top: 27px;
     left: 8px;
 }
-@include breakpoint(1099px) {
+.header__popup-search {
+    display: none;
+    .container {
+        width: 620px;
+    }
+    .title {
+        font-size: 32px;
+        margin-bottom: 21px;
+        font-weight: 700;
+        color: #0056a4;
+    }
+    .search__form {
+        position: relative;
+    }
+    .search__input {
+        padding: 13px;
+        background-color: #fff;
+        border: 1px solid #cacccc;
+        width: 90%;
+        box-sizing: border-box;
+    }
+    .search__submit {
+        position: absolute;
+        right: 0;
+        width: 60px;
+        height: 46px;
+        background: #0056a4 url("../img/icons/search-btn.svg") 50% no-repeat;
+        background-size: 40%;
+        cursor: pointer;
+        color: transparent;
+    }
+}
+@include breakpoint(1099) {
     .header {
         .communication {
             margin-right: 70px;
@@ -337,25 +374,56 @@
     .menu-toggle {
         display: block;
     }
-    .navigation-list {
-        padding: 20px 0;
+
+    .header__nav-wrap {
+        background: hsla(0,0%,100%,.6);
         position: fixed;
-        width: 0;
-        height: 100%;
+        width: 100%;
         top: 0;
-        right: 0;
-        background: rgba(48, 101, 139, .85);
+        z-index: 1;
+        border-bottom: none;
+        max-height: 100%;
+        overflow-y: scroll;
+    }
+    .navigation-list {
+        font-size: 24px;
+        padding: 20px 0;
+        width: 50%;
+        text-align: right;
+        display: none;
+        color: #0d61a8;
         @include transition(.3s);
         z-index: 3;
         .navigation-item {
             margin: 0 auto;
             display: block !important;
-            width: 70%;
+            margin-bottom: 13px;
+            &:hover {
+                background: transparent;
+            }
+            .sub-list {
+                position: absolute;
+                background: transparent;
+                top: 100%;
+                left: inherit;
+                z-index: 1;
+                right: -125px;
+                top: 0;
+                li {
+                    border-left: 2px solid transparent;
+                    @include transition( .25s);
+                    &:hover {
+                        cursor: pointer;
+                        background-color: transparent;
+                        border-color: #00497f;
+                    }
+                }
+            }
         }
     }
 }
 .navigation--active {
-    width: 100% !important;
+    display: block;
     .close-btn-mnu {
         display: block !important;
         position: absolute;
@@ -369,4 +437,92 @@
 }
 .blur {
     filter: blur(10px);
+}
+
+
+@include breakpoint(788) {
+    .header {
+        .logo {
+            float: none;
+            display: inline-block;
+            position: absolute;
+            top: -10px;
+            left: 0;
+            width: 200px;
+        }
+        .communication {
+            position: static;
+            float: right;
+            margin: 0;
+            margin-top: 15px;
+        }
+    }
+    .header__top-line {
+        &:before {
+            width: 100%;
+        }
+    }
+    .header__logo-wrap {
+        text-align: center;
+        position: relative;
+    }
+    .menu-toggle {
+        top: 10px;
+        right: 0;
+    }
+}
+@include breakpoint(530) {
+    .header__top-line {
+        &:before {
+            width: 135%;
+        }
+    }
+    .navigation-list {
+        font-size: 20px;
+        .sub-list {
+            right: -105px !important;
+        }
+    }
+}
+@include breakpoint(395) {
+    .header {
+        .logo {
+            top: -15px;
+            left: 0;
+            width: 170px;
+        }
+        .communication-tel {
+            font-size: 25px;
+            margin-top: 15px;
+        }
+    }
+    .header__top-line {
+        &:before {
+            width: 150%;
+        }
+    }
+    .soc-lang-wrap {
+        .soc-list {
+            margin-right: 10px;
+        }
+        .lang-list {
+            margin-right: 11px;
+        }
+    }
+    .navigation-list {
+        font-size: 18px;
+    }
+}
+@include breakpoint(350) {
+    .header__top-line {
+        &:before {
+            width: 165%;
+        }
+    }
+    .navigation-list {
+        font-size: 14px;
+        .sub-list {
+            right: -85px !important;
+        }
+    }
 }
