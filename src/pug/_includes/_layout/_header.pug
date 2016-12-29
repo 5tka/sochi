@@ -25,11 +25,7 @@ header.header
                                 a(href="#")
                             li.lang-item.eng
                                 a(href="#")
-                        form.search-form(action="") 
-                            label.search-label(for="search")
-                            .search-wrap
-                                input.search-input(type="text" placeholder='Введите запрос')
-                                button.search-btn(type='submit') Найти
+                        img.loupe(src="img/icons/search.svg", alt="")
                         .personal-cabinet
                             a(href="#").signUp
                                 | Регистрация
@@ -47,4 +43,20 @@ header.header
                 span.close-btn-mnu
                 each item in listItem
                     li.navigation-item
-                        a(href="#").navigation-link= item     
+                        a(href="#").navigation-link= item   
+                        ul.sub-list
+                            li 
+                                a
+                                    | lorem  
+                            li 
+                                a
+                                    | lorem  
+                            li 
+                                a
+                                    | lorem  
+.header__popup-search
+    .container
+        .title Поиск
+        form.search__form(action='/', method='get')
+            input.search__input(type='text', placeholder='Поиск...', name='s')
+            button.search__submit(type='submit') sdsd

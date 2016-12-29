@@ -20,12 +20,15 @@ $(document).ready(function() {
 		 return false;
 	});
 
-    $('.search-label').click(function(){
-
-        $('.search-wrap').toggleClass('vv');
-        $('.search-input').toggleClass('w320');
-
+     $('.loupe').on('click',function(){
+        $('.header__popup-search').bPopup({
+            transition: 'slideBack',
+            transitionClose: 'slideIn',
+			modalColor: 'hsla(180,5%,96%,.5)'
+        });
+        return false;
     });
+
 
     $('#nav-icon').click(function(){
         $('.navigation-list').addClass('navigation--active');
