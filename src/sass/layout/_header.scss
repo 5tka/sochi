@@ -7,6 +7,7 @@
         background-repeat: no-repeat;
         background-position: right top;
         background-size: cover;
+        @include transition(.25s);
     }
     &__logo-wrap {
         @include clearfix;
@@ -234,6 +235,7 @@
 }
 .navigation-link {
     padding: 11px 18.3px;
+    margin-bottom: -1px;
     display: block;
     @include transition(.35s);
     &:hover {
@@ -332,12 +334,6 @@
             margin-right: 70px;
         }
     }
-    // .header__top-line {
-    //     border-bottom: 8px solid #65bff1;
-    // }
-    .header__nav-wrap {
-        // display: none;
-    }
     .menu-toggle {
         display: block;
     }
@@ -348,10 +344,9 @@
         height: 100%;
         top: 0;
         right: 0;
-        background: rgba(48, 101, 139, 0.85);
+        background: rgba(48, 101, 139, .85);
         @include transition(.3s);
         z-index: 3;
-
         .navigation-item {
             margin: 0 auto;
             display: block !important;
@@ -372,6 +367,6 @@
 .dn {
     display: none;
 }
-.blur{
+.blur {
     filter: blur(10px);
 }
