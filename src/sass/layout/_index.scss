@@ -1,3 +1,7 @@
+.wrapper {
+	position: relative;
+	transition: transform .5s ease;
+}
 .mainpage {
 	background: {
 		image: url('../img/bg.jpg');
@@ -13,9 +17,10 @@
 	}
 	.news {
 		position: absolute;
-		right: 10px;
+		right: 15px;
 		top: 72px;
 		line-height: 1;
+		display: none;
 		text-transform: uppercase;
 		font-size: 27.5px;
 		color: $blue;
@@ -40,15 +45,20 @@
 		position: absolute;
 		display: block;
 		bottom: 25px;
-		right: 10px;
+		right: 15px;
 	}
 }
 .home-wrapper {
-	margin-left: 120px;
 	color: $blue;
 	font-family: "geometriamedium";
-	display: inline-block;
+	width: 1180px;
+	margin: 0 auto;
+	.container {
+		display: inline-block;
+		padding: 0;
+	}
 	.date {
+		width: 50%;
 		margin-bottom: 20px;
 		font-size: 32px;
 		text-transform: uppercase;
@@ -69,11 +79,11 @@
 		@include clearfix;
 		margin-bottom: 45px;
 		p {
-			float: left;
+			margin-right: 250px;
 		}
 		.more {
 			margin-top: 20px;
-			margin-left: 50px;
+			margin-right: -20px;
 			float: right;
 			@include btn-blue;
 			@include t25;
@@ -125,24 +135,11 @@
 		}
 	}
 	.partners {
-		position: relative;
 		width: 650px;
 		height: 224px;
-		z-index: 1;
 		padding: 30px 62px 45px 40px;
-		&:before {
-			position: absolute;
-			display: block;
-			content: '';
-			width: 100%;
-			top: 0;
-			bottom: 0;
-			left: 0;
-			right: 0;
-			background-color: #fff;
-			opacity: 0.58;
-			z-index: -1;
-		}
+		background-color: rgba(255,255,255,0.58);
+
 		.partners-title {
 			display: block;
 			font-family: 'geometriamedium';
@@ -195,6 +192,147 @@
 					vertical-align: middle;
 				}
 			}
+		}
+	}
+}
+
+//* ВЫСОТА *//
+@include hbreakpoint(740) {
+	.home-wrapper .title {
+		font-size: 47px;
+	}
+}
+@include hbreakpoint(740) {
+	.home-wrapper .title {
+		font-size: 47px;
+	}
+}
+
+//* ШИРИНА  *//
+@include breakpoint(1600) {
+	.mainpage .news {
+		display: block;
+	}
+
+}
+@include breakpoint(1200) {
+	.home-wrapper {
+		width: 100%;
+		.title {
+			font-size: 47px;
+		}
+		.note {
+			font-size: 27px;
+			.more {
+				margin-top: 0;
+			}
+		}
+	}
+}
+@include breakpoint(900) {
+	.home-wrapper {
+		.title {
+		}
+		.note {
+			.more {
+				margin-right: 0;
+			}
+		}
+	}
+}
+@include breakpoint(700) {
+	.home-wrapper {
+		.title {
+		}
+		.links-block .link-item {
+			margin-left: 0;
+			span {
+				display: none;
+			}
+		}
+		.note {
+			.more {
+				margin-right: 0;
+			}
+		}
+	}
+	.news {
+		span {
+			display: none;
+		}
+	}
+}
+
+// новости
+.news-side {
+	z-index: 2;
+	position: absolute;
+	right: 0;
+	overflow: hidden;
+	top: 0;
+	bottom: 0;
+	height: 100%;
+	max-height: 100%;
+	padding-top: 195px;
+	padding-bottom: 60px;
+	width: 300px;
+	overflow-y: scroll;
+	&:before{
+		content: '';
+		background-color: rgba(255,255,255,0.58);
+		display: block;
+		position: absolute;
+		left: 0;
+		width: 100%;
+		margin-top: 195px;
+		top: 0;
+		bottom: 0;
+		z-index: -1;
+	}
+	.news__list {
+		margin-bottom: 1em;
+		.news__item {
+			padding: 16px 20px;
+			@include t25;
+			&:hover {
+				background: rgba(0,73,127,.2);
+				.news__link {
+					font-weight: 600;
+				}
+			}
+		}
+		.news__date {
+		    color: #999;
+		    margin-bottom: .7em;
+		}
+		.news__link {
+			color: $blue;
+		}
+	}
+	.news-summary {
+		text-align: center;
+	}
+	.all-news-link {
+		@include btn-blue;
+	    padding: .5em 1em;
+	}
+}
+
+@include breakpoint(1600) {
+	.news-side {
+		display: none;
+	}
+	.news-side {
+		position: fixed;
+		height: 100%;
+	}
+	.aside-active {
+		transform: translateX(-300px);
+
+		.news-side {
+			display: block !important;
+			transform: translateX(300px);
+			padding-top: 0px;
 		}
 	}
 }

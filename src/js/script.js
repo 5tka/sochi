@@ -1,6 +1,11 @@
 console.log('hello from script.js');
 $(document).ready(function() {
-
+	// переключатель для новостей
+	$('.mainpage .news').click(function(event) {
+		event.preventDefault();
+		$('.wrapper').toggleClass('aside-active');
+		return false;
+	});
     // слайдер на главной
 	$('.partners-slider').slick({
 	  infinite: true,
