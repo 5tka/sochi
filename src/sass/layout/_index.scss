@@ -17,6 +17,7 @@
 	}
 	.news {
 		position: absolute;
+		z-index: 2;
 		right: 15px;
 		top: 72px;
 		line-height: 1;
@@ -45,7 +46,7 @@
 		position: absolute;
 		display: block;
 		bottom: 25px;
-		right: 15px;
+	    right: 225px;
 	}
 }
 .home-wrapper {
@@ -55,7 +56,8 @@
 	margin: 0 auto;
 	.container {
 		display: inline-block;
-		padding: 0;
+		padding: 0 !important;
+		max-width: 1100px;
 	}
 	.date {
 		width: 50%;
@@ -76,15 +78,17 @@
 	.note {
 		color: $blue;
 		font-size: 36px;
-		@include clearfix;
 		margin-bottom: 45px;
+		position: relative;
 		p {
 			margin-right: 250px;
 		}
 		.more {
+			position: absolute;
+			top: 0;
+			right: 0;
 			margin-top: 20px;
 			margin-right: -20px;
-			float: right;
 			@include btn-blue;
 			@include t25;
 			font-size: 24px;
@@ -203,18 +207,21 @@
 		font-size: 47px;
 	}
 }
-@include hbreakpoint(740) {
-	.home-wrapper .title {
-		font-size: 47px;
-	}
-}
 
 //* ШИРИНА  *//
 @include breakpoint(1600) {
-	.mainpage .news {
-		display: block;
+	.mainpage {
+		.news {
+			display: block;
+		}
+		.roscong {
+			position: absolute;
+			display: block;
+			bottom: 25px;
+		    right: 225px;
+			right: 15px;
+		}
 	}
-
 }
 @include breakpoint(1200) {
 	.home-wrapper {
@@ -239,10 +246,31 @@
 				margin-right: 0;
 			}
 		}
+		.links-block {
+			.link-item {
+				&:before {
+					width: 60px;
+					height: 60px;
+				}
+			}
+		}
+	}
+	.mainpage {
+		.news{
+			top: 94px;
+			&:before {
+				margin-right: 0;
+				width: 60px;
+				height: 60px;
+			}
+		}
 	}
 }
-@include breakpoint(700) {
+@include breakpoint(768) {
 	.home-wrapper {
+		.container {
+			display: block;
+		}
 		.title {
 		}
 		.links-block .link-item {
@@ -254,16 +282,123 @@
 		.note {
 			.more {
 				margin-right: 0;
+				padding: 12px 30px;
+			}
+
+		}
+		.date {
+			font-size: 24px;
+			width: 70%;
+			span {
+				font-size: 32px;
+			}
+		}
+		.title {
+			font-size: 32px;
+		}
+		.note {
+			font-size: 20px;
+			margin-bottom: 25px;
+			.more {
+				font-size: 20px;
+			}
+		}
+		.partners .partners-title {
+			font-size: 20px;
+		}
+	}
+	.mainpage {
+		.news {
+			span {
+				display: none;
 			}
 		}
 	}
-	.news {
-		span {
-			display: none;
+
+}
+@include breakpoint(700) {
+	.home-wrapper {
+		.partners  {
+			width: 100%;
+			padding: 30px 40px 30px 40px;
+			height: auto;
+		}
+		.note {
+			@include clearfix;
+			p {
+				margin-right: 0;
+			}
+			.more {
+				margin-top: 10px;
+				position: relative;
+				float: right;
+			}
 		}
 	}
 }
 
+@include breakpoint(480) {
+	.home-wrapper {
+		.links-block {
+			margin-bottom: 25px;
+		}
+		.links-block .link-item {
+			margin-left: 0;
+			span {
+				display: none;
+			}
+			&:before {
+				width: 44px;
+				height: 44px;
+			}
+		}
+		.date {
+			font-size: 18px;
+			width: 70%;
+			span {
+				font-size: 20px;
+			}
+		}
+		.title {
+			font-size: 22px;
+		}
+		.note {
+			font-size: 18px;
+			margin-bottom: 15px;
+			.more {
+				font-size: 16px;
+				padding: 12px 30px;
+			}
+		}
+		.partners .partners-title {
+			margin-bottom: 15px;
+			font-size: 16px;
+		}
+	}
+	.mainpage {
+		.container {
+			padding-top: 50px;
+		}
+		.news{
+			top: 40px;
+			&:before {
+				width: 44px;
+				height: 44px;
+			}
+		}
+	}
+
+}
+@include breakpoint(380) {
+	.home-wrapper {
+		.partners {
+			padding: 15px;
+			.partners-title {
+				margin-bottom: 10px;
+			}
+		}
+	}
+}
 // новости
 .news-side {
 	z-index: 2;
@@ -274,7 +409,7 @@
 	bottom: 0;
 	height: 100%;
 	max-height: 100%;
-	padding-top: 195px;
+	padding-top: 205px;
 	padding-bottom: 60px;
 	width: 300px;
 	overflow-y: scroll;
@@ -285,10 +420,35 @@
 		position: absolute;
 		left: 0;
 		width: 100%;
-		margin-top: 195px;
+		margin-top: 205px;
 		top: 0;
 		bottom: 0;
 		z-index: -1;
+	}
+	.close-news {
+		cursor: pointer;
+		font-size: 0;
+		display: inline-block;
+		position: absolute;
+		top: 20px;
+		right: 20px;
+		width: 40px;
+		height: 40px;
+		span {
+			display: block;
+			width: 40px;
+			background-color: $blue;
+			height: 5px;
+			position: relative;
+			&:nth-of-type(1){
+				top: 15px;
+				transform: rotate(45deg);
+			}
+			&:nth-of-type(2){
+				top: 11px;
+				transform: rotate(-45deg);
+			}
+		}
 	}
 	.news__list {
 		margin-bottom: 1em;
@@ -326,6 +486,14 @@
 	.news-side {
 		position: fixed;
 		height: 100%;
+		padding-bottom: 0;
+		&:before{
+			margin-top: 0;
+			background-color: hsla(177, 73%, 98%, 0.58);
+		}
+	}
+	.wrapper.aside-active {
+		overflow: visible;
 	}
 	.aside-active {
 		transform: translateX(-300px);
@@ -334,6 +502,22 @@
 			display: block !important;
 			transform: translateX(300px);
 			padding-top: 0px;
+		}
+	}
+}
+@include breakpoint(480) {
+	.news__list {
+		.news__item:nth-of-type(1) {
+			padding-right: 65px
+		}
+	}
+	.news-side {
+	    width: 100%;
+	}
+	.aside-active {
+		transform: translateX(-100%);
+		.news-side{
+		    transform: translateX(100%);
 		}
 	}
 }

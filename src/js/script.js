@@ -1,7 +1,7 @@
 console.log('hello from script.js');
 $(document).ready(function() {
 	// переключатель для новостей
-	$('.mainpage .news').click(function(event) {
+	$('.mainpage .news, .news-side .close-news').click(function(event) {
 		event.preventDefault();
 		$('.wrapper').toggleClass('aside-active');
 		return false;
@@ -12,7 +12,23 @@ $(document).ready(function() {
 	  slidesToShow: 3,
 	  slidesToScroll: 1,
 	  // variableWidth: true,
-	  arrows: false
+	  arrows: false,
+  		responsive: [
+			{
+				breakpoint: 768,
+				settings: {
+					slidesToShow: 2,
+					slidesToScroll: 1
+				}
+			},
+			{
+				breakpoint: 480,
+				settings: {
+					slidesToShow: 1,
+					slidesToScroll: 1
+				}
+			}
+		]
 	});
 	$('.partners-prev').click(function (e){
 		e.preventDefault();
