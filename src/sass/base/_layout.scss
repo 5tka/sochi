@@ -8,3 +8,14 @@
         right: 10px;
     }
 }
+
+
+// Кнопки
+@mixin btn-blue {
+	background-color: $blue;
+	font-family: "geometriamedium";
+	color: #fff;
+	&:hover{
+		background-color: #65bff1;
+	}
+}

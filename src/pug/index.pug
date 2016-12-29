@@ -1,1 +1,43 @@
 extends _layout.pug
+block main
+	section.mainpage
+		.container
+			a.news(href='#')
+				span Новости
+			.home-wrapper
+				p.date
+					span 27-28
+					| февраля
+				h1.title
+					| Российский <br> инвестиционный форум
+				.note
+					p
+						| Место проведения: <br> Главный медиацентр Олимпийского парка
+					a.more
+						| Подробнее >
+				.links-block
+					a.link-item.program(href='#')
+						span
+							| Программа форума
+					a.link-item.archive(href='#')
+						span
+							| Архив форума 2016
+				.partners
+					p.partners-title
+						| Генеральные партнеры Форума:
+					.slider-wrapper
+						a.partners-prev(href='#')
+							| Назад
+						.partners-slider
+							a.slide-wrap(href='http://www.gazprom.ru/' target='_blank')
+								img(src='img/partners/gazprom.png' alt='gazprom')
+							a.slide-wrap(href='http://www.fondsovmena.ru/' target='_blank')
+								img(src='img/partners/sovmen.png' alt='sovmen')
+							a.slide-wrap(href='http://genesis-motors.ru/' target='_blank')
+								img(src='img/partners/genesis.png' alt='genesis')
+						a.partners-next(href='#')
+							| Вперед
+
+			a.roscong(href='http://roscongress.org/' target='_blank')
+				img(src='img/icons/ros.png' alt='РосКонгресс')
+block footer
