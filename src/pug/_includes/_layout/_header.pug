@@ -1,0 +1,43 @@
+-var listItem = ['ГЛАВНАЯ','О ФОРУМЕ','ОПЕРАТОР','УЧАСТНИКИ','ПРОГРАММА','СМИ','ПАРТНЕРЫ','ВЫСТАВКА','ГОСТИНИЦЫ','ПОДРЯДЧИКАМ','АРХИВ 2016','КОНТАКТЫ']
+
+header.header
+    .header__top-line
+        .container
+            .header__logo-wrap
+                .logo
+                    a(href="#").logo-link
+                        img.logo-img(src="../img/logo.svg", alt="")
+                .communication
+                    a.communication-tel(href="tel:+74956406547")
+                        | +7 (495) 640 6547
+                    .soc-lang-wrap
+                        ul.soc-list
+                            li.soc-item.fb
+                                a(href="#")
+                            li.soc-item.inst
+                                a(href="#")
+                            li.soc-item.tw
+                                a(href="#")
+                            li.soc-item.yt
+                                a(href="#")
+                        ul.lang-list
+                            li.lang-item.rus
+                                a(href="#")
+                            li.lang-item.eng
+                                a(href="#")
+                        form.search-form(action="") 
+                            label.search-label(for="search")
+                            .search-wrap
+                                input.search-input(type="text" placeholder='Введите запрос')
+                                button.search-btn(type='submit') Найти
+                        .personal-cabinet
+                            a(href="#").signUp
+                                | Регистрация
+                            a(href="#").signIn
+                                | Личный кабинет
+    .header__nav-wrap
+        .container        
+            ul.navigation-list
+                each item in listItem
+                    li.navigation-item
+                        a(href="#").navigation-link= item     

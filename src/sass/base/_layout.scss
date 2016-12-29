@@ -1,0 +1,10 @@
+.container {
+    // outline: 1px solid red;
+    max-width: 1440px;
+    @include clearfix;
+    margin: 0 auto;
+    padding:  {
+        left: 10px;
+        right: 10px;
+    }
+}
