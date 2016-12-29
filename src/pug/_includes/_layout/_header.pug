@@ -35,9 +35,16 @@ header.header
                                 | Регистрация
                             a(href="#").signIn
                                 | Личный кабинет
+                    .menu-toggle
+                        #nav-icon
+                            span
+                            span
+                            span
+                            
     .header__nav-wrap
         .container        
             ul.navigation-list
+                span.close-btn-mnu
                 each item in listItem
                     li.navigation-item
                         a(href="#").navigation-link= item     
